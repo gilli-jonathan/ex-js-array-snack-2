@@ -52,8 +52,18 @@ const books = [
 // Creare un array(longBooksTitles) che contiene solo i titoli dei libri contenuti in longBooks.
 // Stampa in console ogni titolo nella console.
 
+function somma(a, b) {
+    return a + b
+}
 const libriLunghi = books.filter((book) => book.pages > 300)
 console.log(libriLunghi);
+
+const libriLunghiTitoli = libriLunghi.map((i) => i.title)
+console.log(libriLunghiTitoli);
+
+books.forEach((b) => console.log(b.title))
+
+
 
 
 //     Snack 2 - Il primo libro scontato
