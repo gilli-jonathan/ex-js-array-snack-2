@@ -64,12 +64,34 @@ console.log(libriLunghiTitoli);
 books.forEach((b) => console.log(b.title))
 
 
-
-
 //     Snack 2 - Il primo libro scontato
 // Creare un array(availableBooks) che contiene tutti i libri disponibili.
 // Crea un array(discountedBooks) con gli availableBooks, ciascuno con il prezzo scontato del 20 % (mantieni lo stesso formato e arrotonda al centesimo)
 // Salva in una variabile(fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero(senza centesimi).
+
+const libriDisponibili = books.filter((b) => b.available);
+console.log(libriDisponibili);
+
+const libriScontati = libriDisponibili.map((b) => {
+    const prezzo = parseFloat(b.price.replace('€', ''));
+    const prezzoScontato = (prezzo * 0.8).toFixed(2);
+
+    return {
+        ...b,
+        price: `${prezzoScontato} €`
+    }
+})
+console.log(libriScontati);
+
+const prezzoPieno = libriScontati.find((b) => {
+    const prezzo = parseFloat(b.price.replace('€', ''));
+
+    return prezzo % 1 === 0;
+});
+
+console.log(prezzoPieno);
+
+
 //     Snack 3 - Ordinare gli Autori
 // Creare un array(authors) che contiene gli autori dei libri.
 // Crea una variabile booleana(areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
